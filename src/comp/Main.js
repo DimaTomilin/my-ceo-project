@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import ParamedicForm from './ParamedicForm';
 import QuantityForm from './QuantityForm';
+import AddItemForm from './AddItemForm';
 
 export default function Main() {
   return (
@@ -9,6 +10,8 @@ export default function Main() {
       <ParamedicForm />
       <br />
       <QuantityForm />
+      <br />
+      <AddItemForm />
     </Container>
   );
 }

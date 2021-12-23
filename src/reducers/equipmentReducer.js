@@ -35,7 +35,7 @@ export const equipmentReducer = (state = initialState, action) => {
         missing: fullQuantity - currentQuantity,
       });
       console.log(newState);
-      return { ...newState };
+      return [...newState];
     case 'SEND_FORM':
       const afterSending = state.map((item) => {
         return { ...item, currentQuantity: 0, missing: item.fullQuantity };
