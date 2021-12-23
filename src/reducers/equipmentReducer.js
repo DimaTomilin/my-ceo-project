@@ -23,7 +23,7 @@ export const equipmentReducer = (state = initialState, action) => {
         updatedItem.fullQuantity - updatedItem.currentQuantity;
 
       console.log(updatedItem);
-      return { ...copyState };
+      return [...copyState];
     case 'ADD_ITEM':
       const { name, fullQuantity, currentQuantity } = action.payload;
       const newState = state.slice();
