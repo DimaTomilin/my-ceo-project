@@ -1,12 +1,16 @@
 import React from 'react';
+import Header from './comp/Header';
+import Main from './comp/Main';
+import Footer from './comp/Footer';
 
-
-function App() {
+export default function App() {
   return (
     <div className="App">
-      Hello World
+      <Header />
+      <hr />
+      <Main />
+      <hr />
+      <Footer />
     </div>
   );
 }
-
-export default App;

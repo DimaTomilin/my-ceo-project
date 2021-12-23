@@ -9,7 +9,7 @@ const initialState = fullEquipmentList.map((item, index) => {
   };
 });
 
-export const cityFilterReducer = (state = initialState, action) => {
+export const equipmentReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_QUANTITY':
       const { quantity, id } = action.payload;
