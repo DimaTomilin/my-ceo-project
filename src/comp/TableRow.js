@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { MdDeleteForever } from 'react-icons/md';
 
 export default function TableRow({ item }) {
   const CurrentAmountELe = useRef(null);
@@ -15,6 +16,13 @@ export default function TableRow({ item }) {
     });
   };
 
+  const deleteItem = () => {
+    dispatch({
+      type: 'DELETE_ITEM',
+      payload: item.id,
+    });
+  };
+
   return (
     <tr>
       <td>{item.id}</td>
@@ -25,10 +33,16 @@ export default function TableRow({ item }) {
           type="number"
           defaultValue={item.currentQuantity}
           ref={CurrentAmountELe}
-          onChange={setQuantity}
+          onBlur={setQuantity}
         />
       </td>
       <td>{item.missing}</td>
+      <td>
+        <MdDeleteForever
+          style={{ fontSize: '25px', color: 'red' }}
+          onClick={deleteItem}
+        />
+      </td>
     </tr>
   );
 }

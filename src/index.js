@@ -5,9 +5,17 @@ import App from './App';
 import RootReducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { consoleMiddleware } from './middleware/fetchCitiesMiddleware';
+import {
+  consoleMiddleware,
+  checkAvailableAmountMiddleware,
+  checkDeleteMiddleware,
+} from './middleware/Middleware';
 
-const middlewareEnhancer = applyMiddleware(consoleMiddleware);
+const middlewareEnhancer = applyMiddleware(
+  consoleMiddleware,
+  checkAvailableAmountMiddleware,
+  checkDeleteMiddleware
+);
 
 const store = createStore(RootReducer, middlewareEnhancer);
 

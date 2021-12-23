@@ -6,7 +6,7 @@ import AddItemForm from './AddItemForm';
 
 export default function Main() {
   return (
-    <Container className="main">
+    <Container>
       <ParamedicForm />
       <br />
       <QuantityForm />

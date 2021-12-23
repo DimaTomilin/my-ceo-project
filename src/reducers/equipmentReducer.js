@@ -18,11 +18,10 @@ export const equipmentReducer = (state = initialState, action) => {
       let updatedItem = copyState.find((item) => {
         return item.id === id;
       });
-      updatedItem.currentQuantity = quantity;
+      updatedItem.currentQuantity = Number(quantity);
       updatedItem.missing =
         updatedItem.fullQuantity - updatedItem.currentQuantity;
 
-      console.log(updatedItem);
       return [...copyState];
     case 'ADD_ITEM':
       const { name, fullQuantity, currentQuantity } = action.payload;
@@ -30,18 +29,26 @@ export const equipmentReducer = (state = initialState, action) => {
       newState.push({
         name,
         fullQuantity,
+        added: true,
         id: newState.length + 1,
-        currentQuantity: currentQuantity,
-        missing: fullQuantity - currentQuantity,
+        currentQuantity: Number(currentQuantity),
+        missing: Number(fullQuantity) - Number(currentQuantity),
       });
-      console.log(newState);
+
       return [...newState];
+    case 'DELETE_ITEM':
+      const itemId = action.payload;
+      const afterDeleteState = state.filter((item) => {
+        return item.id !== itemId;
+      });
+
+      return [...afterDeleteState];
     case 'SEND_FORM':
       const afterSending = state.map((item) => {
         return { ...item, currentQuantity: 0, missing: item.fullQuantity };
       });
-      console.log(afterSending);
-      return { ...afterSending };
+
+      return [...afterSending];
     default:
       return state;
   }

@@ -1,13 +1,22 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Container, Table, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import TableRow from './TableRow';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function QuantityForm() {
-  const equipment = useSelector((state) => {
-    return state.equipment;
-  });
+  const { equipment, paramedic } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const sendForm = () => {
+    dispatch({
+      type: 'SEND_FORM',
+      payload: {
+        equipment,
+        paramedic,
+      },
+    });
+  };
 
   return (
     <Container style={{ margin: '0 auto', width: '80%' }}>
@@ -19,6 +28,7 @@ export default function QuantityForm() {
             <th>Full Quantity</th>
             <th style={{ width: '200px' }}>Current Quantity</th>
             <th>Missing</th>
+            <th style={{ width: '50px' }}></th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +37,9 @@ export default function QuantityForm() {
           ))}
         </tbody>
       </Table>
+      <Button variant="primary" onClick={sendForm} className="form-btn">
+        Submit
+      </Button>
     </Container>
   );
 }

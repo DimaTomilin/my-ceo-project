@@ -10,11 +10,6 @@ export default function ParamedicForm() {
   const dispatch = useDispatch();
 
   const setUser = () => {
-    console.log({
-      fullName: FullNameELe.current.value,
-      workPlace: WorkEle.current.value,
-      date: DateEle.current.value,
-    });
     dispatch({
       type: 'SET_USER',
       payload: {

@@ -23,7 +23,7 @@ export default function AddItemForm() {
   };
 
   return (
-    <Container style={{ margin: '0 auto', width: '80%' }}>
+    <Container style={{ margin: '0 auto 70px', width: '80%' }}>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Item Name</Form.Label>
@@ -45,7 +45,7 @@ export default function AddItemForm() {
             ref={CurrentAmountEle}
           />
         </Form.Group>
-        <Button variant="primary" onClick={addItem}>
+        <Button variant="primary" onClick={addItem} className="form-btn">
           Create
         </Button>
       </Form>
